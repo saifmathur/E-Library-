@@ -1,0 +1,24 @@
+
+head
+    link(rel="stylesheet", href="contact.css")
+block content
+    h1 Contact US
+    .container
+        form(action="/contact", method="POST")
+            label(for="name") Your Name 
+            input(type="text" name="name" placeholder="Name" required)
+            br 
+            br
+            label(for="email") Your Email
+            input(type="text" name="email" placeholder="Email" required)
+            br
+            br
+            br
+            textarea(name="feedback", cols="50", rows="10", placeholder="Your Feedback")
+            br
+            br
+            button(type="submit") Submit
+
+        
+        footer
+            p &copy; 2020 BookStore

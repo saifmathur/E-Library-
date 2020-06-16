@@ -1,0 +1,35 @@
+label{
+    margin-left: 10px;
+
+}
+input{
+    padding: 5px;
+    margin-left: 10px;
+    width: 25%;
+}
+
+textarea{
+    margin-left: 10px;
+    width: 30%;
+    height: 30%;
+    padding: 10px;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 40px;
+    margin-top: 30px;
+}
+
+.container{
+    text-align: center;
+}
+
+button{
+    padding: 5px;
+    background-color: wheat;
+    border-style: double;
+}
+footer{
+    padding-top: 5%;
+}
