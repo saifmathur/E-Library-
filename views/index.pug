@@ -1,8 +1,15 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-    body
-       
+extends layout
+block content
+    h1 Welcome!
+    .topnav
+        a(href="#home" class="active") Home
+        a(href="#about") About
+        a(href="#contact") Contact
+        
+        .search-container
+            form(action="#")
+                input(type="text", placeholder="Search..",name="search")
+                button(type="submit") Submit
+
+    h2(align="left" class="index-h2") Categories
+    
