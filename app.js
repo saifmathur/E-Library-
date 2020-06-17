@@ -10,9 +10,6 @@ const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
  useUnifiedTopology: true })
 */
 
-
-
-
 const Store = require('./models/store')
 
 app = express()

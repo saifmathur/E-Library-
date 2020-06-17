@@ -10,8 +10,10 @@ const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
 const assert = require('assert')
 
 let db;
-MongoClient.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true}, function (err, database){
-    db = database;
+MongoClient.connect('mongodb://localhost:27017/BookStore',{
+    useUnifiedTopology: true
+    },function (err, database){
+        db = database;
 })
 
 
@@ -30,7 +32,7 @@ router.use(bodyParser.json());
 
 
 router.get('/', function(req,res){
-    
+    res.render('index')
 })
 
 
