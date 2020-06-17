@@ -12,14 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 
-app.use('/', require('./controllers/routes'))
+app.use('/', require('./controller/routes'))
 app.use('/contact', require('./controller/routes'))
 
 
 
-
-
-
-
-
-app.listen(8000,'localhost')
+app.listen(3000,'localhost')

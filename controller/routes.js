@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser')
+
 
 //getting the database in
 const Store = require('../models/store')
@@ -13,6 +15,8 @@ router.use(bodyParser.json());
 
 router.get('/', function(req,res){
     res.render('index')
+    
+
 })
 
 router.get('/contact', function(req,res){
@@ -21,3 +25,4 @@ router.get('/contact', function(req,res){
 
 
 
+module.exports = router;
