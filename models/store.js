@@ -1,11 +1,25 @@
 const mongoose = require('mongoose');
 const bookStoreSchema = new mongoose.Schema({
-    name:{type: String, required: True},
-    category:{type:String, required: false},
-    ISBN:{type:Int32Array, required: false},
+    name:{type: String, required: true},
+    genre:{type:String, required: false},
+    ISBN:{type: String, required: false},
     author:{type:String, required: false},
-    bookCover:{type:Image, required: false}
+    //File:{type:Image, required: false}
 });
 
-const Store = mongoose.model('store', bookStoreSchema);
+const Store = mongoose.model('store', bookStoreSchema,'store');
+
 module.exports = Store;
+
+
+
+/*
+[
+  {"name":"Harry Potter"},
+  {"":""},
+  {"":""},
+  {"":""},
+  {"":""}  
+]
+
+*/

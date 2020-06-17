@@ -1,5 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const MongoClient = require('mongodb')
+
+/*mongoose.connect('mongodb://localhost:27017/BookStore',
+{ useNewUrlParser: true ,
+ useUnifiedTopology: true })
+*/
+
+const Store = require('./models/store')
+
 app = express()
 
 app.set('view engine', 'pug')
