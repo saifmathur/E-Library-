@@ -5,6 +5,8 @@ body{
 
 h1{
     text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 40px;
     
 }
 
@@ -20,7 +22,9 @@ h1{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
   }
   
   .topnav a:hover {
@@ -35,13 +39,17 @@ h1{
   
   .topnav .search-container {
     float: right;
+    
   }
   
   .topnav input[type=text] {
     padding: 6px;
     margin-top: 8px;
-    font-size: 17px;
+    font-size: 16px;
     border: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    
   }
   
   .topnav .search-container button {
@@ -50,9 +58,11 @@ h1{
     margin-top: 8px;
     margin-right: 16px;
     background: #ddd;
-    font-size: 17px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
   }
   
   .topnav .search-container button:hover {

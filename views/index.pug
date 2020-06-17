@@ -1,13 +1,12 @@
 extends layout
 block content
-    h1 Welcome!
+    h1 Welcome to the E-Library!
     .topnav
         a(href="/" class="active") Home
         a(href="/contact") Contact
-        
+        a(href="/category") Search by Category
         .search-container
             form(action="#")
-                input(type="text", placeholder="Search..",name="search")
+                input(type="text", placeholder="Search Library..",name="search")
                 button(type="submit") Submit
 
-    h2(align="left" class="index-h2") Categories

@@ -8,18 +8,8 @@ const bookStoreSchema = new mongoose.Schema({
 });
 
 const Store = mongoose.model('store', bookStoreSchema,'store');
-
 module.exports = Store;
 
 
 
-/*
-[
-  {"name":"Harry Potter"},
-  {"":""},
-  {"":""},
-  {"":""},
-  {"":""}  
-]
 
-*/
