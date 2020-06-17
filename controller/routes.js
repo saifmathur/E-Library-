@@ -6,11 +6,12 @@ const multer = require('multer')
 const GridFsStorage = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const path = require('path')
-const mongoose = require('mongoose')
+const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
+const assert = require('assert')
 
-const conn = mongoose.connect('mongodb://localhost:27017/BookStore',
-{ useNewUrlParser: true ,
- useUnifiedTopology: true 
+let db;
+MongoClient.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true}, function (err, database){
+    db = database;
 })
 
 
@@ -29,15 +30,7 @@ router.use(bodyParser.json());
 
 
 router.get('/', function(req,res){
-    Store.find({},function(err, result){
-        if(err){
-            console.log(err)
-        }
-        else{
-            console.log(result);
-            res.render('index')
-        }
-    })
+    
 })
 
 
@@ -47,6 +40,8 @@ router.get('/contact', function(req,res){
     res.render('contact')
 })
 
-
+router.get('/category', function(req,res){
+    res.render('category')
+})
 
 module.exports = router;
