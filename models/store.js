@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
 
 
 const allCollections = []
-MongoClient.connect('mongodb://localhost:27017/BookStore',function (err,client){
+MongoClient.connect('mongodb://localhost:27017/BookStore',function(err,client){
     if(err){
         console.log(err)    
     }
@@ -17,7 +17,7 @@ MongoClient.connect('mongodb://localhost:27017/BookStore',function (err,client){
             else{
                 collections.forEach(eachCollectionDetails => {
                     allCollections.push(eachCollectionDetails.name)
-                    console.log(eachCollectionDetails.name)
+                    //console.log(eachCollectionDetails.name)
                 })
             }
         })        
@@ -56,5 +56,6 @@ const Fiction = mongoose.model('Fiction', categoryFiction,'Fiction')
 
 module.exports = {
     Inspirational,
-    Fiction
+    Fiction,
+    allCollections
 }

@@ -16,7 +16,6 @@ const mongoose = require('mongoose')
 
 //getting the database in
 const Library = require('../models/store')
-console.log()
 const { query } = require('express');
 
 
@@ -31,27 +30,41 @@ router.use(bodyParser.json());
 
 
 router.get('/', function(req,res){
-    res.render('index')
-    Library.Inspirational.find({},function (err,data){
-        console.log(data)
+    res.render('index',{
+        
     })
     
         
 })
-
-
-
-
-
+    
 router.get('/contact', function(req,res){
     res.render('contact')
     
 })
 
 router.get('/category', function(req,res){
-    res.render('category')
-    //console.log(db.collection({}))
+    res.render('category',{
+        categories: Library.allCollections
+    })
+    console.log(Library.allCollections)
 
 })
 
+router.get('/category/:id', function (req, res){
+    Library.allCollections
+
+})
+
+
+
 module.exports = router;
+
+/*
+app.get('/article/:id', function (req, res){
+    Article.findById(req.params.id, function(err, article){
+       res.render('article', {
+            article: article
+       })
+    })
+})
+*/
