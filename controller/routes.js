@@ -8,11 +8,15 @@ const Grid = require('gridfs-stream')
 const path = require('path')
 const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
 const assert = require('assert')
+const mongoose = require('mongoose')
+
+//mongoose.connect('mongodb://localhost:27017/BookStore')
 
 
 
 //getting the database in
 const Library = require('../models/store')
+console.log()
 const { query } = require('express');
 
 
@@ -28,9 +32,10 @@ router.use(bodyParser.json());
 
 router.get('/', function(req,res){
     res.render('index')
-    Library.Fiction.find({},function (err,data){
+    Library.Inspirational.find({},function (err,data){
         console.log(data)
     })
+    
         
 })
 
