@@ -6,7 +6,9 @@ block content
         a(href="/contact") Contact
         a(href="/category") Search by Category
         .search-container
-            form(action="#")
-                input(type="text", placeholder="Search Library..",name="search")
-                button(type="submit") Submit
+            form(action="/", method="GET")
+                input(type="text", placeholder="Search Library..", name="search")
+                button(type="submit", value="submit") Submit
+        
 
+    p= search

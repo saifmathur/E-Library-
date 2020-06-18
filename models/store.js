@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 const mongodb = require('mongodb')
+const { query } = require('express')
 const MongoClient = mongodb.MongoClient
 
 
 const allCollections = []
+const allResults = []
 MongoClient.connect('mongodb://localhost:27017/BookStore',function(err,client){
     if(err){
         console.log(err)    
@@ -20,7 +22,16 @@ MongoClient.connect('mongodb://localhost:27017/BookStore',function(err,client){
                     //console.log(eachCollectionDetails.name)
                 })
             }
-        })        
+        })
+        /*for(var i in allCollections){
+            var collection = allCollections[i]
+            if(collection == "system.indexes") continue;
+            query = {name:"A Game of Thrones (A Song of Ice and Fire)"}
+            db[collection].find(query,function(err, collections){
+                console.log(collections)
+            })
+        } */ 
+              
         client.close();
     }
 })
