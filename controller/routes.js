@@ -9,17 +9,12 @@ const path = require('path')
 const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
 const assert = require('assert')
 
-let db;
-MongoClient.connect('mongodb://localhost:27017/BookStore',{
-    useUnifiedTopology: true
-    },function (err, database){
-        db = database;
-})
 
 
 //getting the database in
-const Store = require('../models/store')
+const Library = require('../models/store')
 const { query } = require('express');
+
 
 
 router.use(bodyParser.urlencoded(
@@ -33,17 +28,25 @@ router.use(bodyParser.json());
 
 router.get('/', function(req,res){
     res.render('index')
+    Library.Fiction.find({},function (err,data){
+        console.log(data)
+    })
+        
 })
+
 
 
 
 
 router.get('/contact', function(req,res){
     res.render('contact')
+    
 })
 
 router.get('/category', function(req,res){
     res.render('category')
+    //console.log(db.collection({}))
+
 })
 
 module.exports = router;
