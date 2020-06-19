@@ -29,30 +29,24 @@ router.use(bodyParser.urlencoded(
 ))
 router.use(bodyParser.json());
 
-var results = []
+//var results = []
 router.get('/', function(req,res){
     let query = {}
     query.name = req.query.search
     newArray.forEach(model=>{
         model.findOne(query,function(err,result){
-            //query.result = result
-            //console.log(query.result)
-            results.push(result)
+            if(!result){
+                query.book = 'not found'
+            }
+            else{
+                query.book = result.name
+                res.render('index',{
+                    searchResult: query.book
+                })
+            }
             
         })
     })
-    /*console.log(results)
-    results.forEach(i=>{
-        if(i!="It"){
-            results = []
-        }
-        console.log(results)
-    })
-    */
-    res.render('index',{
-        searchResult: results
-    })
-
 })
 
 
