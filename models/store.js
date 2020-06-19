@@ -35,6 +35,15 @@ const categorySchema = new mongoose.Schema({
     //File:{type:Image, required: false}
 });
 
+
+const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
+const Fiction = mongoose.model('Fiction', categorySchema,'Fiction')
+const Thriller = mongoose.model('Thriller',categorySchema,'Thriller')
+const SciFi = mongoose.model('SciFi',categorySchema,'Sci-Fi')
+const Horror = mongoose.model('Horror',categorySchema,'Horror')
+const Fantasy = mongoose.model('Fantasy',categorySchema,'Fantasy')
+const Romance = mongoose.model('Romance',categorySchema,'Romance')
+
 //searching all collections
 const FindAllBooks = function(){
     let models = []
@@ -45,17 +54,9 @@ const FindAllBooks = function(){
     models.push(mongoose.models.Romance)
     models.push(mongoose.models.SciFi)
     models.push(mongoose.models.Thriller)
-    models.push(mongoose.models.store)
+   // models.push(mongoose.models.store)
     return models
 }
-
-const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
-const Fiction = mongoose.model('Fiction', categorySchema,'Fiction')
-const Thriller = mongoose.model('Thriller',categorySchema,'Thriller')
-const SciFi = mongoose.model('SciFi',categorySchema,'Sci-Fi')
-const Horror = mongoose.model('Horror',categorySchema,'Horror')
-const Fantasy = mongoose.model('Fantasy',categorySchema,'Fantasy')
-const Romance = mongoose.model('Romance',categorySchema,'Romance')
 
 
 module.exports = {
