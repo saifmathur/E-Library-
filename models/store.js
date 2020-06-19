@@ -66,7 +66,6 @@ const SciFi = mongoose.model('SciFi',categorySchema,'Sci-Fi')
 const Horror = mongoose.model('Horror',categorySchema,'Horror')
 const Fantasy = mongoose.model('Fantasy',categorySchema,'Fantasy')
 const Romance = mongoose.model('Romance',categorySchema,'Romance')
-const store = mongoose.model('store',categorySchema,'store')
 
 
 module.exports = {
@@ -80,6 +79,5 @@ module.exports = {
     Inspirational,
     Fantasy,
     Romance,
-    store,
     FindAllBooks
 }
