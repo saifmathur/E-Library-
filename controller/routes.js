@@ -18,18 +18,14 @@ const allCollections = Library.allCollections
 const newArray = Library.FindAllBooks()
 const { query } = require('express');
 
-/*newArray.forEach(i =>{
-    i.find({name:"It"},function(err,result){
-        console.log(result)
-    })
-})*/
+
 
 router.use(bodyParser.urlencoded(
     { extended: false }
 ))
 router.use(bodyParser.json());
 
-//var results = []
+
 router.get('/', function(req,res){
     let query = {}
     query.name = req.query.search
@@ -48,10 +44,6 @@ router.get('/', function(req,res){
         })
     })
 })
-
-
-
-
 
 
 router.get('/contact', function(req,res){
