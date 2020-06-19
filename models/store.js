@@ -19,20 +19,9 @@ MongoClient.connect('mongodb://localhost:27017/BookStore',function(err,client){
             else{
                 collections.forEach(eachCollectionDetails => {
                     allCollections.push(eachCollectionDetails.name)
-
-                    //console.log(eachCollectionDetails.name)
                 })
             }
-        })
-        /*for(var i in allCollections){
-            var collection = allCollections[i]
-            if(collection == "system.indexes") continue;
-            query = {name:"A Game of Thrones (A Song of Ice and Fire)"}
-            db[collection].find(query,function(err, collections){
-                console.log(collections)
-            })
-        } */ 
-              
+        })      
         client.close();
     }
 })
@@ -44,7 +33,8 @@ const categorySchema = new mongoose.Schema({
     ISBN:{type: String, required: false},
     author:{type:String, required: false},
     //File:{type:Image, required: false}
-    });
+});
+
 //searching all collections
 const FindAllBooks = function(){
     let models = []
