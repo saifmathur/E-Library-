@@ -9,5 +9,6 @@ html(lang="en")
         h1 Search by Genre
         ul.list-group
         each val, i in categories
-            a(href="/category/:id")= val
+            a(href="/category/:"+val)= val
+            br 
             br
