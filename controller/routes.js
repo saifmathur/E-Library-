@@ -26,6 +26,8 @@ router.use(bodyParser.urlencoded(
 ))
 router.use(bodyParser.json());
 
+
+
 router.get('/', function(req,res){
     let query = {}
     query.name = req.query.search
@@ -62,7 +64,7 @@ router.post('/contact', function(req,res){
             console.log(err)
         }
         else{
-            res.redirect('/contact')
+            res.redirect('/')
             console.log('Feedback Submitted')  
         }
     })
@@ -86,4 +88,3 @@ router.get('/category/:category', function(req, res){
 })
 
 module.exports = router;
-
