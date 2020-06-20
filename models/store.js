@@ -35,6 +35,12 @@ const categorySchema = new mongoose.Schema({
     //File:{type:Image, required: false}
 });
 
+const suggestionSchema = new mongoose.Schema({
+    name: { type:String, required: true },
+    email: { type:String, required: true },
+    feedback:{type: String, required: true}
+})
+
 
 const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
 const Fiction = mongoose.model('Fiction', categorySchema,'Fiction')
@@ -43,6 +49,9 @@ const SciFi = mongoose.model('SciFi',categorySchema,'Sci-Fi')
 const Horror = mongoose.model('Horror',categorySchema,'Horror')
 const Fantasy = mongoose.model('Fantasy',categorySchema,'Fantasy')
 const Romance = mongoose.model('Romance',categorySchema,'Romance')
+
+
+const Feedback = mongoose.model('Feedback',suggestionSchema,'Suggestions_and_Feedback')
 
 //searching all collections
 const FindAllBooks = function(){
@@ -70,5 +79,6 @@ module.exports = {
     Inspirational,
     Fantasy,
     Romance,
+    Feedback,
     FindAllBooks
 }

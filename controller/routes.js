@@ -17,6 +17,7 @@ const Library = require('../models/store')
 const allCollections = Library.allCollections
 const newArray = Library.FindAllBooks()
 const { query } = require('express');
+const Contact = Library.Feedback
 
 
 
@@ -24,7 +25,6 @@ router.use(bodyParser.urlencoded(
     { extended: false }
 ))
 router.use(bodyParser.json());
-
 
 router.get('/', function(req,res){
     let query = {}
@@ -48,8 +48,29 @@ router.get('/', function(req,res){
 
 router.get('/contact', function(req,res){
     res.render('contact')
-    
 })
+
+router.post('/contact', function(req,res){
+    var suggestion = new Contact()
+    suggestion.name = req.body.name;
+    suggestion.email = req.body.email;
+    suggestion.feedback = req.body.feedback;
+
+
+    suggestion.save(function(err, result){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.redirect('/contact')
+            console.log('Feedback Submitted')  
+        }
+    })
+})
+
+
+
+
 
 
 router.get('/category', function(req,res){
