@@ -9,6 +9,10 @@ block content
             form(action="/", method="POST")
                 input(type="text", placeholder="Search Library..", name="search")
                 button(type="submit", value="submit") Submit
-
-    p <span><b>Book Found</b><hr><span> #{searchResult} 
-    
+                hr
+    hr
+    p <b>#{msg}</b>
+    p <b>Name: </b> #{searchResult}
+    p <b>ISBN number :</b> #{isbn}
+    p <b>Genre: </b> #{genre}
+    p <b>Author: </b> #{author}        

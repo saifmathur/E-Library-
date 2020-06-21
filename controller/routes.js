@@ -39,8 +39,15 @@ router.post('/',function(req,res){
             }
             else{
                 query.book = result.name
+                query.ISBN = result.ISBN
+                query.genre = result.genre
+                query.author = result.author
                 res.render('index',{
-                    searchResult: query.book
+                    msg: 'Book Found ',
+                    searchResult: query.book,
+                    isbn: query.ISBN,
+                    genre: query.genre,
+                    author: query.author
                 })
             }
             
