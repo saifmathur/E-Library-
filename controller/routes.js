@@ -11,6 +11,11 @@ const assert = require('assert')
 const mongoose = require('mongoose')
 
 
+router.use(bodyParser.urlencoded(
+    { extended: false }
+))
+router.use(bodyParser.json());
+
 
 //getting the database in
 const Library = require('../models/store')
@@ -20,17 +25,13 @@ const { query } = require('express');
 const Contact = Library.Feedback
 
 
+router.get('/',(req,res)=>{
+    res.render('index')
+})
 
-router.use(bodyParser.urlencoded(
-    { extended: false }
-))
-router.use(bodyParser.json());
-
-
-
-router.get('/', function(req,res){
+router.post('/',function(req,res){
     let query = {}
-    query.name = req.query.search
+    query.name = req.body.search
     newArray.forEach(model=>{
         model.findOne(query,function(err,result){
             if(!result){
@@ -47,6 +48,27 @@ router.get('/', function(req,res){
     })
 })
 
+/*
+router.get('/', function(req,res){
+    let query = {}
+    console.log(req.body.search)
+    query.name = req.query.search
+    newArray.forEach(model=>{
+        model.findOne(query,function(err,result){
+            if(!result){
+                query.book = 'not found'
+            }
+            else{
+                query.book = result.name
+                res.render('index',{
+                    searchResult: query.book
+                })
+            }
+            
+        })
+    })
+})
+*/
 
 router.get('/contact', function(req,res){
     res.render('contact')

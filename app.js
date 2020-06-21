@@ -13,6 +13,10 @@ mongoose.connect('mongodb://localhost:27017/BookStore',
 const Store = require('./models/store')
 
 app = express()
+app.route('/routes')
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
 
 app.set('view engine', 'pug')
 app.set('views', __dirname + '/views')
@@ -20,8 +24,7 @@ app.set('views', __dirname + '/views')
 
 app.use(express.static(__dirname + '/assets'))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json())
+
 
 
 app.use('/', require('./controller/routes'))
