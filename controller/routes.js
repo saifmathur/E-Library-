@@ -48,28 +48,6 @@ router.post('/',function(req,res){
     })
 })
 
-/*
-router.get('/', function(req,res){
-    let query = {}
-    console.log(req.body.search)
-    query.name = req.query.search
-    newArray.forEach(model=>{
-        model.findOne(query,function(err,result){
-            if(!result){
-                query.book = 'not found'
-            }
-            else{
-                query.book = result.name
-                res.render('index',{
-                    searchResult: query.book
-                })
-            }
-            
-        })
-    })
-})
-*/
-
 router.get('/contact', function(req,res){
     res.render('contact')
 })
