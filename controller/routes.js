@@ -31,7 +31,7 @@ router.get('/',(req,res)=>{
 
 router.post('/',function(req,res){
     let query = {}
-    query.name = {$regex: req.body.search}
+    query.name = {$regex: req.body.search,$options: "i"}
     /*Library.Fantasy.find(query,function(err,result){
         console.log(result)
     })*/
