@@ -31,7 +31,10 @@ router.get('/',(req,res)=>{
 
 router.post('/',function(req,res){
     let query = {}
-    query.name = req.body.search
+    query.name = {$regex: req.body.search}
+    /*Library.Fantasy.find(query,function(err,result){
+        console.log(result)
+    })*/
     newArray.forEach(model=>{
         model.findOne(query,function(err,result){
             if(!result){
