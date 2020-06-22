@@ -6,9 +6,9 @@ const MongoClient = mongodb.MongoClient
 
 const allCollections = []
 
-MongoClient.connect('mongodb://localhost:27017/BookStore',function(err,client){
+mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex:true}).then(function(err,client){
     if(err){
-        console.log(err)    
+        //console.log(err)    
     }
     else {
         const db = client.db('BookStore');
@@ -41,6 +41,7 @@ const suggestionSchema = new mongoose.Schema({
     feedback:{type: String, required: true}
 })
 
+//categorySchema.index({name:1})
 
 const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
 const Fiction = mongoose.model('Fiction', categorySchema,'Fiction')
