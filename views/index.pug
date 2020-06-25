@@ -15,4 +15,6 @@ block content
     p <b>Name: </b> #{searchResult}
     p <b>ISBN number :</b> #{isbn}
     p <b>Genre: </b> #{genre}
-    p <b>Author: </b> #{author}        
+    p <b>Author: </b> #{author}
+        form(action="/file" method="POST")
+            p <b>File: <a href="/file"> #{searchResult}</a></b>        

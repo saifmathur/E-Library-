@@ -51,6 +51,7 @@ router.post('/',function(req,res){
                     isbn: query.ISBN,
                     genre: query.genre,
                     author: query.author
+                    
                 })
             }
             

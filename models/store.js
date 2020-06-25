@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const mongodb = require('mongodb')
 const { query } = require('express')
 const MongoClient = mongodb.MongoClient
+const fs = require('fs')
 
 
 const allCollections = []
@@ -42,6 +43,8 @@ const suggestionSchema = new mongoose.Schema({
     feedback:{type: String, required: true}
 })
 
+
+
 categorySchema.index({name:1})
 
 const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
@@ -51,8 +54,10 @@ const SciFi = mongoose.model('SciFi',categorySchema,'Sci-Fi')
 const Horror = mongoose.model('Horror',categorySchema,'Horror')
 const Fantasy = mongoose.model('Fantasy',categorySchema,'Fantasy')
 const Romance = mongoose.model('Romance',categorySchema,'Romance')
+const Educational = mongoose.model('Educational',categorySchema,'Educational')
 
 
+//feedback data
 const Feedback = mongoose.model('Feedback',suggestionSchema,'Suggestions_and_Feedback')
 
 //searching all collections
@@ -65,6 +70,7 @@ const FindAllBooks = function(){
     models.push(mongoose.models.Romance)
     models.push(mongoose.models.SciFi)
     models.push(mongoose.models.Thriller)
+    models.push(mongoose.models.Educational)
    // models.push(mongoose.models.store)
     return models
 }
@@ -82,5 +88,6 @@ module.exports = {
     Fantasy,
     Romance,
     Feedback,
+    Educational,
     FindAllBooks
 }
