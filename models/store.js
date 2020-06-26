@@ -4,12 +4,6 @@ const { query } = require('express')
 const MongoClient = mongodb.MongoClient
 const fs = require('fs')
 
-
-
-
-var allCollections = []
-
-
 mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true},function(err,db){
     if(err){
         console.log(err) 
@@ -19,8 +13,6 @@ mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true
     }
 
 })
-
-
 
 
 const categorySchema = new mongoose.Schema({
@@ -66,18 +58,13 @@ const FindAllBooks = function(){
     models.push(mongoose.models.SciFi)
     models.push(mongoose.models.Thriller)
     models.push(mongoose.models.Educational)
-   // models.push(mongoose.models.store)
+
     return models
 }
-
-
-allCollections.push(mongoose.modelNames())
-
 
 module.exports = {
     Inspirational,
     Fiction,
-    allCollections,
     Thriller,
     SciFi,  
     Fiction,

@@ -19,14 +19,13 @@ router.use(bodyParser.json());
 
 //getting the database in
 const Library = require('../models/store')
-var names = []
-Library.allCollections.forEach(i=>{
-    i.forEach(j=>{
-        names.push(j)
-    })
-})
-console.log(names)
 const newArray = Library.FindAllBooks()
+var allGenreNames = []
+newArray.forEach(model =>{
+    allGenreNames.push(model.modelName)
+})
+
+
 const { query } = require('express');
 const Contact = Library.Feedback
 
@@ -100,7 +99,7 @@ router.post('/file',function(req,res){
 
 router.get('/category', function(req,res){
     res.render('category',{
-        categories: names
+        categories: allGenreNames
     })
     
 })
