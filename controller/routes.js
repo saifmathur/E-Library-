@@ -30,42 +30,35 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',function(req,res){
-    if(req.body.search === ''){
+    let query = {}
+    query.name = {$regex: req.body.search, $options: "i"}
+    if(req.body.search === '' || req.body.search === null){
         res.render('index',{
-            msg: 'Empty String, No search results'
+            msg: 'Please search for something'
         })
     }
-    let query = {}
-    query.name = {$regex: req.body.search,$options: "i"}
-    /*Library.Fantasy.find(query,function(err,result){
-        console.log(result)
-    })*/
-    newArray.forEach(model=>{
-        model.findOne(query,function(err,result){
-            if(!result){
-                res.render('index',{
-                    msg : 'Book not found'
-                })
-            }
-            else{
-                query.book = result.name
-                query.ISBN = result.ISBN
-                query.genre = result.genre
-                query.author = result.author
-                res.render('index',{
-                    msg: 'Book Found ',
-                    bookName: query.book,
-                    searchResult: 'Name: ' + query.book,
-                    isbn: 'ISBN: ' + query.ISBN,
-                    genre: 'Genre: ' + query.genre,
-                    author: 'Author: '+ query.author,
-                    fileMsg: 'Click to Open file: '
-
-                })
-            }
-            
+    else{
+        newArray.forEach(model=>{
+            model.findOne(query,function(err,result){
+                if(result){
+                    query.book = result.name
+                    query.ISBN = result.ISBN
+                    query.genre = result.genre
+                    query.author = result.author
+                    res.render('index',{
+                        msg: 'Book Found ',
+                        bookName: query.book,
+                        searchResult: 'Name: ' + query.book,
+                        isbn: 'ISBN: ' + query.ISBN,
+                        genre: 'Genre: ' + query.genre,
+                        author: 'Author: '+ query.author,
+                        fileMsg: 'Click to Open file: '
+                    })
+                }
+                
+            })
         })
-    })
+    }
 })
 
 router.get('/contact', function(req,res){

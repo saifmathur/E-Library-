@@ -47,6 +47,7 @@ const suggestionSchema = new mongoose.Schema({
 
 categorySchema.index({name:1})
 
+
 const Inspirational =  mongoose.model('Inspirational',categorySchema,'Inspirational')
 const Fiction = mongoose.model('Fiction', categorySchema,'Fiction')
 const Thriller = mongoose.model('Thriller',categorySchema,'Thriller')
@@ -77,7 +78,7 @@ const FindAllBooks = function(){
 
 //books
 module.exports.getFile = function(req,res){
-    
+
     
 }
 module.exports = {
