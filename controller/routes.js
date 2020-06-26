@@ -19,10 +19,17 @@ router.use(bodyParser.json());
 
 //getting the database in
 const Library = require('../models/store')
-const allCollections = Library.allCollections
+var names = []
+Library.allCollections.forEach(i=>{
+    i.forEach(j=>{
+        names.push(j)
+    })
+})
+console.log(names)
 const newArray = Library.FindAllBooks()
 const { query } = require('express');
 const Contact = Library.Feedback
+
 
 
 router.get('/',(req,res)=>{
@@ -36,6 +43,7 @@ router.post('/',function(req,res){
         res.render('index',{
             msg: 'Please search for something'
         })
+        return 
     }
     else{
         newArray.forEach(model=>{
@@ -85,14 +93,14 @@ router.post('/contact', function(req,res){
 
 
 router.post('/file',function(req,res){
-    res.render('index')
+    console.log(Library.books)
 })
 
 
 
 router.get('/category', function(req,res){
     res.render('category',{
-        categories: Library.allCollections
+        categories: names
     })
     
 })

@@ -5,28 +5,22 @@ const MongoClient = mongodb.MongoClient
 const fs = require('fs')
 
 
-const allCollections = []
 
-MongoClient.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex:true}).then(function(err,client){
+
+var allCollections = []
+
+
+mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true},function(err,db){
     if(err){
-        console.log(err)    
-        //throw err
+        console.log(err) 
     }
     else {
-        const db = client.db('BookStore');
-        db.listCollections().toArray(function(err,collections){
-            if(err){
-                console.log(err)
-            }
-            else{
-                collections.forEach(eachCollectionDetails => {
-                    allCollections.push(eachCollectionDetails.name)
-                })
-            }
-        })      
-        client.close();
+        console.log('Database Connected')       
     }
+
 })
+
+
 
 
 const categorySchema = new mongoose.Schema({
@@ -76,11 +70,10 @@ const FindAllBooks = function(){
     return models
 }
 
-//books
-module.exports.getFile = function(req,res){
 
-    
-}
+allCollections.push(mongoose.modelNames())
+
+
 module.exports = {
     Inspirational,
     Fiction,

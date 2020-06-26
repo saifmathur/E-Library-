@@ -11,10 +11,11 @@ block content
                 button(type="submit", value="submit") Submit
                 hr
     hr
+    
     p <b>#{msg}</b>
     p  #{searchResult}
     p  #{isbn}
     p  #{genre}
     p  #{author}
-        form(action="/file" method="POST")
-            p  #{fileMsg} <input type="submit" value="#{bookName}">    
+    form(action="/file" method="POST")
+        p  #{fileMsg} <input type="submit" value="#{bookName}">    
