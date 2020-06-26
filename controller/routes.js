@@ -30,6 +30,11 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',function(req,res){
+    if(req.body.search === ''){
+        res.render('index',{
+            msg: 'Empty String, No search results'
+        })
+    }
     let query = {}
     query.name = {$regex: req.body.search,$options: "i"}
     /*Library.Fantasy.find(query,function(err,result){
@@ -38,7 +43,9 @@ router.post('/',function(req,res){
     newArray.forEach(model=>{
         model.findOne(query,function(err,result){
             if(!result){
-                query.book = 'not found'
+                res.render('index',{
+                    msg : 'Book not found'
+                })
             }
             else{
                 query.book = result.name
@@ -47,11 +54,13 @@ router.post('/',function(req,res){
                 query.author = result.author
                 res.render('index',{
                     msg: 'Book Found ',
-                    searchResult: query.book,
-                    isbn: query.ISBN,
-                    genre: query.genre,
-                    author: query.author
-                    
+                    bookName: query.book,
+                    searchResult: 'Name: ' + query.book,
+                    isbn: 'ISBN: ' + query.ISBN,
+                    genre: 'Genre: ' + query.genre,
+                    author: 'Author: '+ query.author,
+                    fileMsg: 'Click to Open file: '
+
                 })
             }
             
@@ -82,7 +91,9 @@ router.post('/contact', function(req,res){
 })
 
 
-
+router.post('/file',function(req,res){
+    res.render('index')
+})
 
 
 

@@ -12,9 +12,9 @@ block content
                 hr
     hr
     p <b>#{msg}</b>
-    p <b>Name: </b> #{searchResult}
-    p <b>ISBN number :</b> #{isbn}
-    p <b>Genre: </b> #{genre}
-    p <b>Author: </b> #{author}
+    p  #{searchResult}
+    p  #{isbn}
+    p  #{genre}
+    p  #{author}
         form(action="/file" method="POST")
-            p <b>File: <a href="/file"> #{searchResult}</a></b>        
+            p  #{fileMsg} <input type="submit" value="#{bookName}">    
