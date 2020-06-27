@@ -19,7 +19,9 @@ router.use(bodyParser.json());
 
 //getting the database in
 const Library = require('../models/store')
+var conn = Library.conn
 const newArray = Library.FindAllBooks()
+
 var allGenreNames = []
 newArray.forEach(model =>{
     allGenreNames.push(model.modelName)
@@ -93,7 +95,7 @@ router.post('/contact', function(req,res){
 })
 
 
-router.post('/index/:id',function(req,res){
+router.get('/index/:id',function(req,res){
     var query= {}
     query.id = req.params.id
     Library.Grid.findById(query.id,function(err,book){

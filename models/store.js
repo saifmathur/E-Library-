@@ -5,15 +5,20 @@ const MongoClient = mongodb.MongoClient
 const fs = require('fs')
 const { Console } = require('console')
 
-mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true},function(err,db){
+
+const conn = mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true},function(err,db){
     if(err){
         console.log(err) 
     }
     else {
-        console.log('Connected to ' + db.name)       
+        console.log('Connected to ' + db.name)
+           
     }
 
 })
+
+
+
 
 
 const categorySchema = new mongoose.Schema({
