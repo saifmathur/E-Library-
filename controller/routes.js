@@ -42,11 +42,11 @@ router.post('/',function(req,res){
         res.render('index',{
             msg: 'Please search for something'
         })
-        return 
     }
     else{
         newArray.forEach(model=>{
             model.findOne(query,function(err,result){
+                console.log(result)
                 if(result){
                     query.book = result.name
                     query.ISBN = result.ISBN
@@ -59,7 +59,9 @@ router.post('/',function(req,res){
                         isbn: 'ISBN: ' + query.ISBN,
                         genre: 'Genre: ' + query.genre,
                         author: 'Author: '+ query.author,
-                        fileMsg: 'Click to Open file: '
+                        fileMsg: 'Click to Open file: ',
+                        id: result.id,
+                        bookid: result.BookID
                     })
                 }
                 
@@ -91,10 +93,26 @@ router.post('/contact', function(req,res){
 })
 
 
-router.post('/file',function(req,res){
-    console.log(Library.books)
+router.post('/index/:id',function(req,res){
+    var query= {}
+    query.id = req.params.id
+    Library.Grid.findById(query.id,function(err,book){
+        console.log(book)
+    })
+    
+    
+    res.render('file')
 })
-
+/*
+//get single article
+app.get('/article/:id', function (req, res){
+    Article.findById(req.params.id, function(err, article){
+       res.render('article', {
+            article: article
+       })
+    })
+})
+*/
 
 
 router.get('/category', function(req,res){

@@ -3,13 +3,14 @@ const mongodb = require('mongodb')
 const { query } = require('express')
 const MongoClient = mongodb.MongoClient
 const fs = require('fs')
+const { Console } = require('console')
 
 mongoose.connect('mongodb://localhost:27017/BookStore',{useUnifiedTopology: true,useNewUrlParser: true},function(err,db){
     if(err){
         console.log(err) 
     }
     else {
-        console.log('Database Connected')       
+        console.log('Connected to ' + db.name)       
     }
 
 })
@@ -20,7 +21,7 @@ const categorySchema = new mongoose.Schema({
     genre:{type:String, required: false},
     ISBN:{type: String, required: false},
     author:{type:String, required: false},
-    //File:{type:Image, required: false}
+    BookID:{type:String, required: false}
 });
 
 const suggestionSchema = new mongoose.Schema({
@@ -29,7 +30,19 @@ const suggestionSchema = new mongoose.Schema({
     feedback:{type: String, required: true}
 })
 
-
+const gridSchema = new mongoose.Schema({},{strict: false})
+const chunkSchema = new mongoose.Schema({},{strict: false})
+const Grid = mongoose.model("Grid",gridSchema,'fs.files')
+const Chunk = mongoose.model("Chunk",chunkSchema,'fs.chunks')
+/*Grid.find({},function(err,files){
+    var arr = []
+    arr.push(files)
+    console.log(files)
+})
+Chunk.find({},function (err, chunks){
+    //console.log(chunks)
+})
+*/
 
 categorySchema.index({name:1})
 
@@ -74,5 +87,7 @@ module.exports = {
     Romance,
     Feedback,
     Educational,
+    Grid,
+    Chunk,
     FindAllBooks
 }

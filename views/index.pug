@@ -17,5 +17,9 @@ block content
     p  #{isbn}
     p  #{genre}
     p  #{author}
-    form(action="/file" method="POST")
+    form(action="/index/"+bookid, method="POST")
         p  #{fileMsg} <input type="submit" value="#{bookName}">    
+
+
+
+        
