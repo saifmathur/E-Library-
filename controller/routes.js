@@ -121,10 +121,9 @@ router.get('/index/:id',function(req,res){
             })
         }
         else{
+            
             const readstream = gfs.createReadStream(book)
             readstream.pipe(res)
-            
-
         }
     })
     
