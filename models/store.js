@@ -39,16 +39,6 @@ const gridSchema = new mongoose.Schema({},{strict: false})
 const chunkSchema = new mongoose.Schema({},{strict: false})
 const Grid = mongoose.model("Grid",gridSchema,'fs.files')
 const Chunk = mongoose.model("Chunk",chunkSchema,'fs.chunks')
-/*Grid.find({},function(err,files){
-    var arr = []
-    arr.push(files)
-    console.log(files)
-})
-Chunk.find({},function (err, chunks){
-    //console.log(chunks)
-})
-*/
-
 categorySchema.index({name:1})
 
 

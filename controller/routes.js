@@ -9,6 +9,7 @@ const path = require('path')
 const mongodb = require('mongodb'), MongoClient = mongodb.MongoClient
 const assert = require('assert')
 const mongoose = require('mongoose')
+const fs = require('fs')
 
 
 router.use(bodyParser.urlencoded(
@@ -19,8 +20,20 @@ router.use(bodyParser.json());
 
 //getting the database in
 const Library = require('../models/store')
-var conn = Library.conn
+//var conn = Library.conn
 const newArray = Library.FindAllBooks()
+
+const conn = mongoose.createConnection('mongodb://localhost:27017/BookStore',
+{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+let gfs;
+conn.once('open',function(){
+   gfs = Grid(conn.db, mongoose.mongo)
+   //gfs.collection('fs.files')
+})
 
 var allGenreNames = []
 newArray.forEach(model =>{
@@ -99,22 +112,23 @@ router.get('/index/:id',function(req,res){
     var query= {}
     query.id = req.params.id
     Library.Grid.findById(query.id,function(err,book){
-        console.log(book)
+        if(err){
+            console.log(err)
+        }
+        if(!book || book.length === 0){
+            return res.status(404).json({
+                err: 'No file Found'
+            })
+        }
+        else{
+            const readstream = gfs.createReadStream(book)
+            readstream.pipe(res)
+            
+
+        }
     })
     
-    
-    res.render('file')
 })
-/*
-//get single article
-app.get('/article/:id', function (req, res){
-    Article.findById(req.params.id, function(err, article){
-       res.render('article', {
-            article: article
-       })
-    })
-})
-*/
 
 
 router.get('/category', function(req,res){
